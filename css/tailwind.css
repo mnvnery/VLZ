@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.task-list-item::before {
+  @apply hidden;
+}
+
+.task-list-item {
+  @apply list-none;
+}
+
+.footnotes {
+  @apply pt-8 mt-12 border-t border-gray-200 dark:border-gray-700;
+}
+
+.csl-entry {
+  @apply my-5;
+}
+
+/* https://stackoverflow.com/questions/61083813/how-to-avoid-internal-autofill-selected-style-to-be-applied */
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+@font-face {
+  font-family: 'Post Grotesk';
+  src: url('../public/fonts/PostGrotesk-Regular.otf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Post Grotesk';
+  src: url('../public/fonts/PostGrotesk-Bold.otf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Playfair';
+  src: url('../public/fonts/PlayfairDisplay-Regular.ttf');
+  font-weight: bold;
+}
+
+body {
+  font-family: 'Post Grotesk';
+}
+
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-bottom: 100px solid #ff5467;
+  border-left: 100px solid transparent;
+}
+
+.triangle-black {
+  width: 0;
+  height: 0;
+  border-bottom: 100px solid black;
+  border-left: 100px solid transparent;
+}
+
+.hover-view:hover .view {
+  opacity: 1;
+}
+.view {
+  opacity: 0;
+}
+
+.marquee-container {
+  height: 50px;
+  overflow: hidden;
+  line-height: 30px;
+  position: relative;
+}
+
+  .marquee {
+    top: 0;
+    left: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    animation: marquee 30s linear infinite;
+  }
+
+  .marquee2 {
+    animation-delay: 15s;
+  }
+  b {
+    padding-left: 10px;
+  }
+
+
+@keyframes marquee {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -100%
+  }
+}
+
+.paragraphs  p {
+  margin-bottom: 1.5em;
+}
+
+blockquote {
+  font-family: 'Playfair';
+  font-size: 2em;
+  line-height: 1;
+  margin: 0.5em 0 1em -4em;
+  width: 80%;
+}
+
+.embla {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  flex: 0 0 100%;
+}
+@media (min-width: 768px) {
+  .item:last-child:nth-child(4n - 1) {
+    grid-column-end: -1;
+  }
+  
+  .item:nth-last-child(2):nth-child(4n + 1) {
+    grid-column-end: 3;
+  }
+}
+@media (max-width: 768px) {
+  .marquee-container {
+    height: 40px;
+  }
+  .marquee {
+    width: 100%;
+  }
+}
