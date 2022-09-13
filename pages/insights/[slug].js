@@ -59,6 +59,7 @@ export default function Project({ data }) {
   return (
     <>
       <div className="absolute top-0 left-0 mx-[-1vw] h-[85vh] w-[102vw]">
+        {/*
         <Image
           src={data.coverImage.url}
           objectFit="cover"
@@ -70,6 +71,7 @@ export default function Project({ data }) {
       <div className="mt-[75vh]"></div>
       <div className="float-right mr-32 mb-16 w-1/2 text-2xl">
         <ReactMarkdown>{data.content}</ReactMarkdown>
+         */}
       </div>
     </>
   )
