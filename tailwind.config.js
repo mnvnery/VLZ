@@ -14,6 +14,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        xxl: '1980px',
+      },
       spacing: {
         '9/16': '56.25%',
       },
@@ -22,27 +25,30 @@ module.exports = {
         12: '3rem',
         13: '3.25rem',
         14: '3.5rem',
-        'extra-tight': '0.85'
+        'extra-tight': '0.85',
       },
       fontSize: {
-        '8.5xl': ['7rem', {
-          lineHeight: '1',
-        }],
+        '8.5xl': [
+          '7rem',
+          {
+            lineHeight: '1',
+          },
+        ],
       },
       fontFamily: {
         sans: ['InterVariable', ...defaultTheme.fontFamily.sans],
-        'playfair': ['Playfair', 'serif'],
+        playfair: ['Playfair', 'serif'],
       },
       colors: {
         primary: colors.teal,
         gray: colors.neutral,
-        'petrol': '#234343',
-        'pink': '#ffbac4',
-        'coral': '#ff5467',
-        'purple': '#5136b7',
+        petrol: '#234343',
+        pink: '#ffbac4',
+        coral: '#ff5467',
+        purple: '#5136b7',
       },
       borderRadius: {
-        'xl': "1.2rem",
+        xl: '1.2rem',
       },
       typography: (theme) => ({
         DEFAULT: {

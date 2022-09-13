@@ -5,7 +5,6 @@ import { request } from '@/lib/datocms'
 import Image from 'next/image'
 import Link from 'next/link'
 
-
 const INSIGHTS_QUERY = `{
   insightsPage {
     headerImage {
@@ -78,8 +77,8 @@ function colour(hex) {
 
 export async function getStaticProps() {
   const page = await request({
-    query: INSIGHTS_QUERY
-  });
+    query: INSIGHTS_QUERY,
+  })
   return { props: { page: page.insightsPage } }
 }
 
@@ -87,59 +86,116 @@ export default function Insights({ page }) {
   return (
     <>
       <PageSEO title={`Insights`} description={siteMetadata.description} />
-      <div className="absolute w-[102vw] h-[20vh] md:h-[40vh] mx-[-1vw] top-0 left-0">
-        <Image src={page.headerImage.url} objectFit="cover" layout="fill" className="object-left-bottom" />
+      <div className="absolute top-0 left-0 mx-[-1vw] h-[20vh] w-[102vw] md:h-[40vh]">
+        <Image
+          src={page.headerImage.url}
+          objectFit="cover"
+          layout="fill"
+          className="object-left-bottom"
+        />
       </div>
-      <div className="mt-[16vh] md:mt-[35vh]"></div>
-      <div className='md:w-3/4 mb-12 md:mb-16'>
-        <div className='text-xl md:text-2xl mb-5 md:mb-3'>Insights</div>
-        <div className='text-3xl md:text-5xl font-bold'>{page.intro}</div>
+      <div className="mt-[16vh] md:mt-[22vh] xxl:mt-[32vh]"></div>
+      <div className="mb-12 md:mb-16 md:w-3/4 xxl:mb-24">
+        <div className="mb-5 text-xl md:mb-8 md:text-2xl xxl:mb-10 xxl:text-5xl">Insights</div>
+        <div className="text-3xl font-bold md:text-5xl xxl:text-7xl">{page.intro}</div>
       </div>
-      <div className='md:grid grid-cols-3 gap-7 mb-16 space-y-5 md:space-y-0'>
-      {page.articles.slice(0, 3).map((insight, i) => (
-            <div key={i} className='hover-view'>
-              <Link href={`#`}><div>
-              <div className='relative'>
-                <div className='relative w-full h-[40vh]'>
-                  <Image src={insight.coverImage.url} objectFit="cover" layout='fill' className='rounded-xl'/>
-                </div>
-              
-                <div className='absolute top-5 left-5'>
-                  <div className='text-2xl mb-5'>{insight.category}</div>
-                  <div className='text-3xl font-bold w-2/3 uppercase leading-extra-tight'>{insight.title}</div>
-                </div>
-                <div className='relative view'>
-                  <div className='triangle-black absolute right-0 bottom-0 rounded-br-xl'></div>
-                  <div className='absolute right-2 bottom-2 text-white text-xl'>View</div>
+      <div className="mb-16 grid-cols-3 gap-7 space-y-5 md:grid md:space-y-0">
+        {page.articles.slice(0, 3).map((insight, i) => (
+          <div key={i} className="hover-view">
+            <Link href={`#`}>
+              <div>
+                <div className="relative">
+                  <div className="relative h-[40vh] w-full">
+                    <Image
+                      src={insight.coverImage.url}
+                      objectFit="cover"
+                      layout="fill"
+                      className="rounded-xl"
+                    />
+                  </div>
+
+                  <div className="absolute top-5 left-5 xxl:top-8 xxl:left-8">
+                    <div className="mb-5 text-2xl xxl:mb-10 xxl:text-5xl">{insight.category}</div>
+                    <div className="w-2/3 text-3xl font-bold uppercase leading-extra-tight xxl:text-6xl">
+                      {insight.title}
+                    </div>
+                  </div>
+                  <div className="view relative">
+                    <div className="triangle-black absolute right-0 bottom-0"></div>
+                    <div className="absolute right-2 bottom-2 text-xl text-white xxl:right-4 xxl:bottom-4 xxl:text-4xl">
+                      View
+                    </div>
+                  </div>
                 </div>
               </div>
-              </div></Link>
-            </div>
+            </Link>
+          </div>
         ))}
       </div>
-      <div className='text-5xl md:text-8xl md:w-2/3 leading-extra-tight mb-16'>
-          {page.inbetween}
+      <div className="mb-16 text-5xl leading-extra-tight md:w-2/3 md:text-8xl xxl:w-4/5 xxl:text-[10em]">
+        {page.inbetween}
       </div>
-      <div className='grid grid-cols-12 gap-5 md:gap-7 grid-flow-dense mb-16'>
-      {page.articles.slice(3).map((insight, i) => (
-        <div key={i} className={`hover-view ${postSize(insight.size)}`}><Link href={`#`}><div className={insight.size === 'large' ? 'flex w-full space-x-7' : ''}>
-          <div className={`relative ${insight.size === 'large' ? 'w-full md:w-2/3' : ''}`}>
-            <div className={`relative w-full ${imageHeight(insight.size)}`}>
-              <Image src={insight.coverImage.url} objectFit="cover" layout='fill' className={`${insight.size === 'small' ? 'rounded-xl' : 'rounded-xl rounded-tl-none'}`}/>
-            </div>
-            <div className={`absolute top-0 left-0 w-full h-full mix-blend-multiply ${insight.size === 'small' ? 'rounded-xl' : 'rounded-xl rounded-tl-none'} ${insight.layoverColor  ? colour(insight.layoverColor.hex) : ''}`}></div>
-            <div className={`absolute top-5 left-5 ${insight.textWhite ? 'text-white' : 'text-black'}`}>
-              <div className='text-2xl mb-5'>{insight.category}</div>
-              <div className={`${insight.size === 'small' ? 'text-3xl w-2/3' : 'text-4xl w-2/5'} font-bold uppercase leading-extra-tight`}>{insight.title}</div>
-            </div>
-            <div className='relative view'>
-              <div className='triangle-black absolute right-0 bottom-0 rounded-br-xl'></div>
-              <div className='absolute right-2 bottom-2 text-white text-xl'>View</div>
-            </div>
+      <div className="mb-16 grid grid-flow-dense grid-cols-12 gap-5 md:gap-7">
+        {page.articles.slice(3).map((insight, i) => (
+          <div key={i} className={`hover-view ${postSize(insight.size)}`}>
+            <Link href={`#`}>
+              <div className={insight.size === 'large' ? 'flex w-full space-x-7' : ''}>
+                <div className={`relative ${insight.size === 'large' ? 'w-full md:w-2/3' : ''}`}>
+                  <div className={`relative w-full ${imageHeight(insight.size)}`}>
+                    <Image
+                      src={insight.coverImage.url}
+                      objectFit="cover"
+                      layout="fill"
+                      className={`${
+                        insight.size === 'small' ? 'rounded-xl' : 'rounded-xl rounded-tl-none'
+                      }`}
+                    />
+                  </div>
+                  <div
+                    className={`absolute top-0 left-0 h-full w-full mix-blend-multiply ${
+                      insight.size === 'small' ? 'rounded-xl' : 'rounded-xl rounded-tl-none'
+                    } ${insight.layoverColor ? colour(insight.layoverColor.hex) : ''}`}
+                  ></div>
+                  <div
+                    className={`absolute top-5 left-5 xxl:top-8 xxl:left-8 ${
+                      insight.textWhite ? 'text-white' : 'text-black'
+                    }`}
+                  >
+                    <div className="mb-5 text-2xl xxl:mb-10 xxl:text-5xl">{insight.category}</div>
+                    <div
+                      className={`${
+                        insight.size === 'small'
+                          ? 'w-2/3 text-3xl xxl:text-6xl'
+                          : 'w-2/5 text-4xl xxl:text-7xl'
+                      } font-bold uppercase leading-extra-tight`}
+                    >
+                      {insight.title}
+                    </div>
+                  </div>
+                  <div className="view relative">
+                    <div className="triangle-black absolute right-0 bottom-0"></div>
+                    <div className="absolute right-2 bottom-2 text-xl text-white xxl:right-4 xxl:bottom-4 xxl:text-5xl">
+                      View
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className={`${
+                    insight.size === 'large'
+                      ? 'relative hidden h-[auto] md:block md:w-1/3'
+                      : 'hidden'
+                  }`}
+                >
+                  <Image
+                    src={'/static/images/asterisk.svg'}
+                    objectFit="contain"
+                    layout="fill"
+                  ></Image>
+                </div>
+              </div>
+            </Link>
           </div>
-          <div className={`${insight.size === 'large' ? 'hidden md:block md:w-1/3 relative h-[auto]' : 'hidden'}`}><Image src={'/static/images/asterisk.svg'} objectFit="contain" layout='fill'></Image></div>
-          </div></Link></div>
-      ))}
+        ))}
       </div>
     </>
   )

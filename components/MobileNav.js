@@ -21,56 +21,94 @@ const MobileNav = () => {
 
   return (
     <div className="sm:hidden">
-    <button
+      <button
         type="button"
         className="ml-1 mr-1 h-8 w-8 rounded py-1"
         aria-label="Toggle Menu"
         onClick={onToggleNav}
-    >
-        <svg width="32" height="32" viewBox="0 0 25 25" fill="currentColor" className="text-gray-900" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M11 11v-11h1v11h11v1h-11v11h-1v-11h-11v-1h11z"/></svg>
-    </button>
-    <div
-        className={`fixed top-0 left-0 z-10 h-full w-full transform bg-petrol fill-white text-white duration-300 ease-in-out ${navShow ? 'translate-x-0' : 'translate-x-full'}`}
-    >
-        <div className="flex justify-between mt-6">
+      >
+        <svg
+          width="32"
+          height="32"
+          viewBox="0 0 25 25"
+          fill="currentColor"
+          className="text-gray-900"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M11 11v-11h1v11h11v1h-11v11h-1v-11h-11v-1h11z"
+          />
+        </svg>
+      </button>
+      <div
+        className={`fixed top-0 left-0 z-10 h-full w-full transform bg-petrol fill-white text-white duration-300 ease-in-out ${
+          navShow ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <div className="mt-6 flex justify-between">
+          <Link href="/" className="relative ml-6 h-10 w-1/2">
+            <Image src={'/static/images/logo-white.svg'} layout="fill" objectFit="contain" />
+          </Link>
 
-        <Link href="/" className='relative h-10 w-1/2 ml-6'>
-            <Image src={'/static/images/logo-white.svg'} layout='fill' objectFit='contain' />
-        </Link>
-
-            <button
-                type="button"
-                className="mr-4 h-8 w-8 rounded"
-                aria-label="Toggle Menu"
-                onClick={onToggleNav}
+          <button
+            type="button"
+            className="mr-4 h-8 w-8 rounded"
+            aria-label="Toggle Menu"
+            onClick={onToggleNav}
+          >
+            <svg
+              width="24"
+              height="24"
+              xmlns="http://www.w3.org/2000/svg"
+              fillRule="evenodd"
+              clipRule="evenodd"
             >
-                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M12 11.293l10.293-10.293.707.707-10.293 10.293 10.293 10.293-.707.707-10.293-10.293-10.293 10.293-.707-.707 10.293-10.293-10.293-10.293.707-.707 10.293 10.293z"/></svg>
-            </button>
+              <path d="M12 11.293l10.293-10.293.707.707-10.293 10.293 10.293 10.293-.707.707-10.293-10.293-10.293 10.293-.707-.707 10.293-10.293-10.293-10.293.707-.707 10.293 10.293z" />
+            </svg>
+          </button>
         </div>
-        <nav className="fixed flex flex-col justify-between mt-16 h-[75%]">
+        <nav className="fixed mt-16 flex h-[75%] flex-col justify-between">
+          <div>
+            {headerNavLinks.map((link) => (
+              <div key={link.title} className="px-5 py-4">
+                <Link href={link.href}>
+                  <a onClick={onToggleNav} className="text-7xl leading-8 text-white">
+                    {link.title}
+                  </a>
+                </Link>
+              </div>
+            ))}
+            <div className="px-5 py-4">
+              <a href={`mailto:${siteMetadata.email}`} className="text-7xl leading-8 text-white">
+                Contact
+              </a>
+            </div>
+          </div>
+          <div className="px-5 font-bold uppercase leading-tight">
             <div>
-                {headerNavLinks.map((link) => (
-                    <div key={link.title} className="px-5 py-4">
-                        <Link
-                            href={link.href}
-                        >
-                            <a onClick={onToggleNav} className="text-7xl text-white leading-8">{link.title}</a>
-                        </Link>
-                    </div>
-                ))}
-                <div className='px-5 py-4'><a href={`mailto:${siteMetadata.email}`} className='text-7xl text-white leading-8'>Contact</a></div>
+              HELLO
+              <br />
+              @VIVALAZOOM.CO.UK
             </div>
-            <div className='uppercase px-5 leading-tight font-bold'>
-                <div>HELLO<br/>@VIVALAZOOM.CO.UK</div>
-                <div>+44(0)161 225 1045</div>
-                <br/>
-                <a href='https://www.instagram.com/viva_la_zoom/' target="_blank">INSTAGRAM</a><br/>
-                <a href='https://twitter.com/vivalazoomuk' target="_blank">TWITTER</a><br/>
-                <a href='https://en-gb.facebook.com/vivalazoom/' target="_blank">FACEBOOK</a>
-            </div>
+            <div>+44(0)161 225 1045</div>
+            <br />
+            <a href="https://www.instagram.com/viva_la_zoom/" target="_blank" rel="noreferrer">
+              INSTAGRAM
+            </a>
+            <br />
+            <a href="https://twitter.com/vivalazoomuk" target="_blank" rel="noreferrer">
+              TWITTER
+            </a>
+            <br />
+            <a href="https://en-gb.facebook.com/vivalazoom/" target="_blank" rel="noreferrer">
+              FACEBOOK
+            </a>
+          </div>
         </nav>
+      </div>
     </div>
-</div>
   )
 }
 
