@@ -1,6 +1,6 @@
-import { request } from "@/lib/datocms";
-import Image from "next/image";
-import ReactMarkdown from "react-markdown";
+import { request } from '@/lib/datocms'
+import Image from 'next/image'
+import ReactMarkdown from 'react-markdown'
 
 const ARTICLES_QUERY = `{
     allInsights {
@@ -26,45 +26,51 @@ const FILTERED_QUERY = `
 }`
 
 export async function getStaticPaths() {
-    const articles = await request({
-        query: ARTICLES_QUERY
-    });
+  const articles = await request({
+    query: ARTICLES_QUERY,
+  })
 
-    return {
-        paths: articles.allInsights.map(article => {
-            return {
-                params: {
-                    slug: article.slug
-                }
-            }
-        }), 
-        fallback: false
-    }
+  return {
+    paths: articles.allInsights.map((article) => {
+      return {
+        params: {
+          slug: article.slug,
+        },
+      }
+    }),
+    fallback: false,
+  }
 }
 
 export async function getStaticProps({ params }) {
-    const data = await request({
-        query: FILTERED_QUERY, 
-        variables: {slug: params.slug}
-    });
+  const data = await request({
+    query: FILTERED_QUERY,
+    variables: { slug: params.slug },
+  })
 
-    return {
-        props: {
-            data: data.insight
-        }
-    };
+  return {
+    props: {
+      data: data.insight,
+    },
+  }
 }
 
-export default function Project({data}) {
-    return (
-        <>
-        <div className="absolute w-[102vw] h-[85vh] mx-[-1vw] top-0 left-0">
-            <Image src={data.coverImage.url} objectFit="cover" layout="fill" className="object-bottom" />
-            <div className="absolute top-[15vh] right-40 text-8.5xl w-min text-bold">{data.title}</div>
-        </div>
-        <div className="mt-[75vh]"></div>
-            <div className="text-2xl w-1/2 float-right mr-32 mb-16"><ReactMarkdown>{data.content}</ReactMarkdown></div>
-        </>
-    )
+export default function Project({ data }) {
+  return (
+    <>
+      <div className="absolute top-0 left-0 mx-[-1vw] h-[85vh] w-[102vw]">
+        <Image
+          src={data.coverImage.url}
+          objectFit="cover"
+          layout="fill"
+          className="object-bottom"
+        />
+        <div className="text-bold absolute top-[15vh] right-40 w-min text-8.5xl">{data.title}</div>
+      </div>
+      <div className="mt-[75vh]"></div>
+      <div className="float-right mr-32 mb-16 w-1/2 text-2xl">
+        <ReactMarkdown>{data.content}</ReactMarkdown>
+      </div>
+    </>
+  )
 }
-

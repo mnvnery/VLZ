@@ -11,7 +11,7 @@
 }
 
 .footnotes {
-  @apply pt-8 mt-12 border-t border-gray-200 dark:border-gray-700;
+  @apply mt-12 border-t border-gray-200 pt-8 dark:border-gray-700;
 }
 
 .csl-entry {
@@ -46,7 +46,6 @@ body {
   font-family: 'Post Grotesk';
 }
 
-
 .triangle {
   width: 0;
   height: 0;
@@ -75,34 +74,33 @@ body {
   position: relative;
 }
 
-  .marquee {
-    top: 0;
-    left: 100%;
-    width: 100%;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    animation: marquee 30s linear infinite;
-  }
+.marquee {
+  top: 0;
+  left: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  animation: marquee 30s linear infinite;
+}
 
-  .marquee2 {
-    animation-delay: 15s;
-  }
-  b {
-    padding-left: 10px;
-  }
-
+.marquee2 {
+  animation-delay: 15s;
+}
+b {
+  padding-left: 10px;
+}
 
 @keyframes marquee {
   0% {
     left: 100%;
   }
   100% {
-    left: -100%
+    left: -100%;
   }
 }
 
-.paragraphs  p {
+.paragraphs p {
   margin-bottom: 1.5em;
 }
 
@@ -127,9 +125,24 @@ blockquote {
   .item:last-child:nth-child(4n - 1) {
     grid-column-end: -1;
   }
-  
+
   .item:nth-last-child(2):nth-child(4n + 1) {
     grid-column-end: 3;
+  }
+}
+
+@media (min-width: 1980px) {
+  .triangle {
+    border-bottom: 200px solid #ff5467;
+    border-left: 200px solid transparent;
+  }
+
+  .triangle-black {
+    border-bottom: 200px solid black;
+    border-left: 200px solid transparent;
+  }
+  .marquee-container {
+    height: 80px;
   }
 }
 @media (max-width: 768px) {

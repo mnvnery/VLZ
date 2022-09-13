@@ -54,9 +54,7 @@ const securityHeaders = [
 
 module.exports = withBundleAnalyzer({
   images: {
-    domains: [
-      'www.datocms-assets.com',
-    ],
+    domains: ['www.datocms-assets.com'],
   },
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
