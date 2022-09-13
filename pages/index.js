@@ -85,34 +85,38 @@ export default function Home({ home, insights, work }) {
       </div>
       */}
       {/* Who we are section */}
-
-      <div className="mx-[-2em] mb-6 bg-pink px-8 pt-8 xxl:mx-[-5em] xxl:px-20 xxl:py-10">
-        <div className="md:w-3/4">
-          <div className="mb-5 text-xl md:mb-3 md:text-2xl xxl:mb-8 xxl:mt-8 xxl:text-5xl">
-            Who we are
+      <motion.div
+        initial={{ y: 100, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ stiffness: 50, duration: 0.7 }}
+      >
+        <div className="mx-[-2em] mb-6 bg-pink px-8 pt-8 xxl:mx-[-5em] xxl:px-20 xxl:py-10">
+          <div className="md:w-3/4">
+            <div className="mb-5 text-xl md:mb-3 md:text-2xl xxl:mb-8 xxl:mt-8 xxl:text-5xl">
+              Who we are
+            </div>
+            <div
+              className="text-3xl font-bold md:text-5xl xxl:text-7xl"
+              dangerouslySetInnerHTML={{ __html: home.homePage.whoWeAre }}
+            />
           </div>
-          <div
-            className="text-3xl font-bold md:text-5xl xxl:text-7xl"
-            dangerouslySetInnerHTML={{ __html: home.homePage.whoWeAre }}
-          />
+          <div className="py-10 text-center">
+            <Button href="/about" text="Find out more"></Button>
+          </div>
         </div>
-        <div className="py-10 text-center">
-          <Button href="/about" text="Find out more"></Button>
-        </div>
-      </div>
-
+      </motion.div>
       <div className="hidden md:block">
         <div className="mb-3 text-2xl xxl:mb-12 xxl:mt-20 xxl:text-5xl">Latest Work</div>
         <div className="grid grid-cols-3 gap-5 xxl:gap-10">
           {work.allProjects.map((w, i) => (
-            <div key={i}>
+            <SoftMotion key={i}>
               <ProjectCard
                 thumbnail={w.thumbnail.url}
                 title={w.title}
                 description={w.shortDescription}
                 href={`/work/${w.slug}`}
               />
-            </div>
+            </SoftMotion>
           ))}
         </div>
       </div>
