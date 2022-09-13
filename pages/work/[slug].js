@@ -2,12 +2,9 @@ import ProjectCard from '@/components/ProjectCard'
 import { request } from '@/lib/datocms'
 import Image from 'next/image'
 import Button from '@/components/Button'
-import dynamic from 'next/dynamic'
 import { EmblaCarousel } from '@/components/EmblaCarousel'
 import Link from 'next/link'
 import SoftMotion from '@/components/SoftMotion'
-
-const ReactPlayer = dynamic(() => import('react-player/lazy'), { ssr: false })
 
 const PROJECTS_QUERY = `{
 allProjects {
@@ -56,6 +53,7 @@ export default function Project({ data }) {
       <div className="mt-5 mb-12 hidden text-2xl font-bold uppercase md:mb-8 md:block md:text-5xl">
         {data.title}
       </div>
+      {/* 
       <div className="relative mt-8 pt-[56.25%] md:mt-0">
         <ReactPlayer
           url={data.videoLink.url}
@@ -68,6 +66,7 @@ export default function Project({ data }) {
           className="absolute top-0 left-0 h-full md:h-[90%]"
         />
       </div>
+      */}
       <div className="mt-5 mb-12 border-t border-black pt-4 text-2xl font-bold uppercase md:hidden md:text-6xl">
         {data.title}
       </div>

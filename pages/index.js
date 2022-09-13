@@ -6,7 +6,6 @@ import Button from '@/components/Button'
 import Image from 'next/image'
 import { EmblaCarousel } from '@/components/EmblaCarousel'
 import { motion } from 'framer-motion'
-import ReactPlayer from 'react-player'
 import ProjectCard from '@/components/ProjectCard'
 import SoftMotion from '@/components/SoftMotion'
 
@@ -74,6 +73,7 @@ export default function Home({ home, insights, work }) {
   return (
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
+      {/*
       <div className="relative mt-10 mb-8 rounded-xl pt-[56.25%] md:mt-0 xxl:mt-10 xxl:mb-16">
         <ReactPlayer
           url={home.homePage.showreel.url}
@@ -85,6 +85,7 @@ export default function Home({ home, insights, work }) {
           className="absolute top-0 left-0 overflow-hidden rounded-xl"
         />
       </div>
+      */}
       {/* Who we are section */}
       <motion.div
         initial={{ y: 100, opacity: 0 }}
