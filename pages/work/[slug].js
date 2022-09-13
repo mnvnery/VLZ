@@ -89,10 +89,20 @@ export default function Project({ data }) {
       <SoftMotion>
         <div className="mb-8 grid grid-cols-2 gap-5 md:mx-32 md:mb-12 xxl:mx-40">
           <div className="relative h-[20vh] w-full md:h-[40vh]">
-            <Image src={data.allImages[0].url} objectFit="cover" layout="fill" />
+            <Image
+              src={data.allImages[0].url}
+              objectFit="cover"
+              layout="fill"
+              alt="Project Image"
+            />
           </div>
           <div className="relative h-[20vh] w-full md:h-[40vh]">
-            <Image src={data.allImages[1].url} objectFit="cover" layout="fill" />
+            <Image
+              src={data.allImages[1].url}
+              objectFit="cover"
+              layout="fill"
+              alt="Project Image"
+            />
           </div>
         </div>
       </SoftMotion>
@@ -128,7 +138,7 @@ export default function Project({ data }) {
         <div className="mb-12 grid grid-cols-2 gap-5 md:grid-cols-3">
           {data.allImages.slice(3).map((image, i) => (
             <div key={i} className="relative h-[20vh] w-full md:h-[40vh]">
-              <Image src={image.url} objectFit="cover" layout="fill" />
+              <Image src={image.url} objectFit="cover" layout="fill" alt="Project Image" />
             </div>
           ))}
         </div>
@@ -177,10 +187,15 @@ export default function Project({ data }) {
             <EmblaCarousel title="Latest Work">
               {data.suggestedProjects.map((w, i) => (
                 <div className="embla__slide" key={i}>
-                  <Link href={w.slug}>
+                  <Link href={w.slug} passHref>
                     <div className="relative">
                       <div className="relative h-[70vh] w-full">
-                        <Image src={w.thumbnail.url} objectFit="cover" layout="fill" />
+                        <Image
+                          src={w.thumbnail.url}
+                          objectFit="cover"
+                          layout="fill"
+                          alt="Project Image"
+                        />
                       </div>
                       <div className="mt-5">
                         <div className="text-xl">{w.title}</div>

@@ -54,7 +54,7 @@ export default function Work({ work }) {
       <div className="mb-10 mt-7 grid-cols-2 gap-7 md:mt-0 md:grid xxl:mt-10 xxl:gap-12">
         {work.projects.map((p, i) => (
           <div key={i} className={`hover-view ${p.large ? 'col-span-2' : ''}`}>
-            <Link href={`/work/${p.slug}`}>
+            <Link href={`/work/${p.slug}`} passHref>
               <div>
                 <div
                   className={`relative w-full ${

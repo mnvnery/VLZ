@@ -88,6 +88,7 @@ export default function Insights({ page }) {
       <PageSEO title={`Insights`} description={siteMetadata.description} />
       <div className="absolute top-0 left-0 mx-[-1vw] h-[20vh] w-[102vw] md:h-[40vh]">
         <Image
+          alt=""
           src={page.headerImage.url}
           objectFit="cover"
           layout="fill"
@@ -102,11 +103,12 @@ export default function Insights({ page }) {
       <div className="mb-16 grid-cols-3 gap-7 space-y-5 md:grid md:space-y-0">
         {page.articles.slice(0, 3).map((insight, i) => (
           <div key={i} className="hover-view">
-            <Link href={`#`}>
+            <Link href={`/insights`} passHref>
               <div>
                 <div className="relative">
                   <div className="relative h-[40vh] w-full">
                     <Image
+                      alt={insight.title}
                       src={insight.coverImage.url}
                       objectFit="cover"
                       layout="fill"
@@ -138,11 +140,12 @@ export default function Insights({ page }) {
       <div className="mb-16 grid grid-flow-dense grid-cols-12 gap-5 md:gap-7">
         {page.articles.slice(3).map((insight, i) => (
           <div key={i} className={`hover-view ${postSize(insight.size)}`}>
-            <Link href={`#`}>
+            <Link href={`/insights`} passHref>
               <div className={insight.size === 'large' ? 'flex w-full space-x-7' : ''}>
                 <div className={`relative ${insight.size === 'large' ? 'w-full md:w-2/3' : ''}`}>
                   <div className={`relative w-full ${imageHeight(insight.size)}`}>
                     <Image
+                      alt={insight.title}
                       src={insight.coverImage.url}
                       objectFit="cover"
                       layout="fill"
@@ -187,6 +190,7 @@ export default function Insights({ page }) {
                   }`}
                 >
                   <Image
+                    alt="decorative element"
                     src={'/static/images/asterisk.svg'}
                     objectFit="contain"
                     layout="fill"
