@@ -1,8 +1,8 @@
 const siteMetadata = {
   title: 'Viva La Zoom',
-  author: 'Tails Azimuth',
-  headerTitle: 'TailwindBlog',
-  description: 'A blog created with Next.js and Tailwind.css',
+  author: 'Viva La Zoom',
+  headerTitle: 'Viva La Zoom',
+  description: 'Moving Image Makers',
   language: 'en-us',
   theme: 'light', // system, dark or light
   siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
@@ -10,7 +10,8 @@ const siteMetadata = {
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
   socialBanner: '/static/images/twitter-card.png',
-  email: 'address@yoursite.com',
+  email: 'hello@vivalazoom.co.uk',
+  phone: '+44(0)161 225 1045',
   github: 'https://github.com',
   twitter: 'https://twitter.com/Twitter',
   facebook: 'https://facebook.com',

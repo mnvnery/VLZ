@@ -122,7 +122,7 @@ export default function Insights({ page }) {
                   </div>
                   <div className="view relative">
                     <div className="triangle-black absolute right-0 bottom-0"></div>
-                    <div className="absolute right-2 bottom-2 text-xl text-white xxl:right-4 xxl:bottom-4 xxl:text-4xl">
+                    <div className="absolute right-4 bottom-2 text-xl text-white md:text-2xl xxl:right-6 xxl:bottom-4 xxl:text-4xl">
                       View
                     </div>
                   </div>
@@ -174,7 +174,7 @@ export default function Insights({ page }) {
                   </div>
                   <div className="view relative">
                     <div className="triangle-black absolute right-0 bottom-0"></div>
-                    <div className="absolute right-2 bottom-2 text-xl text-white xxl:right-4 xxl:bottom-4 xxl:text-5xl">
+                    <div className="absolute right-4 bottom-2 text-xl text-white md:text-2xl xxl:right-6 xxl:bottom-4 xxl:text-4xl">
                       View
                     </div>
                   </div>
