@@ -47,8 +47,6 @@ const WORK_QUERY = `
   }  
 `
 
-const transition = { stiffness: 50, duration: 0.7 }
-
 export async function getStaticProps() {
   const home = await request({
     query: HOMEPAGE_QUERY,
@@ -97,9 +95,10 @@ export default function Home({ home, insights, work }) {
             <div className="mb-5 text-xl md:mb-3 md:text-2xl xxl:mb-8 xxl:mt-8 xxl:text-5xl">
               Who we are
             </div>
-            <div className="text-3xl font-bold md:text-5xl xxl:text-7xl">
-              {home.homePage.whoWeAre}
-            </div>
+            <div
+              className="text-3xl font-bold md:text-5xl xxl:text-7xl"
+              dangerouslySetInnerHTML={{ __html: home.homePage.whoWeAre }}
+            />
           </div>
           <div className="py-10 text-center">
             <Button href="/about" text="Find out more"></Button>
@@ -181,24 +180,22 @@ export default function Home({ home, insights, work }) {
             <EmblaCarousel title="Insights">
               {insights.allInsights.map((insight, i) => (
                 <div className="embla__slide relative" key={i}>
-                  <Link href="#">
-                    <div className="relative">
-                      <div className="relative h-[40vh] w-full">
-                        <Image
-                          src={insight.coverImage.url}
-                          objectFit="cover"
-                          layout="fill"
-                          className="rounded-xl"
-                        />
-                      </div>
-                      <div className="absolute top-5 left-5">
-                        <div className="text-xl">{insight.category}</div>
-                        <div className="w-2/3 text-2xl font-bold uppercase xxl:text-5xl">
-                          {insight.title}
-                        </div>
+                  <div className="relative">
+                    <div className="relative h-[40vh] w-full">
+                      <Image
+                        src={insight.coverImage.url}
+                        objectFit="cover"
+                        layout="fill"
+                        className="rounded-xl"
+                      />
+                    </div>
+                    <div className="absolute top-5 left-5">
+                      <div className="text-xl">{insight.category}</div>
+                      <div className="w-2/3 text-2xl font-bold uppercase xxl:text-5xl">
+                        {insight.title}
                       </div>
                     </div>
-                  </Link>
+                  </div>
                 </div>
               ))}
             </EmblaCarousel>

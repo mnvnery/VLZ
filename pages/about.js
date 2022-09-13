@@ -95,9 +95,10 @@ export default function About({ aboutPage }) {
         <div className="mb-5 text-xl md:mb-3 md:text-2xl xxl:mb-8 xxl:mt-8 xxl:text-5xl">
           Who we are
         </div>
-        <div className="text-3xl font-bold md:text-5xl xxl:text-7xl">
-          {aboutPage.about.whoWeAre}
-        </div>
+        <div
+          className="text-3xl font-bold md:text-5xl xxl:text-7xl"
+          dangerouslySetInnerHTML={{ __html: aboutPage.about.whoWeAre }}
+        />
       </div>
 
       <SoftMotion>
@@ -106,7 +107,7 @@ export default function About({ aboutPage }) {
             <Image src="/static/images/star.svg" objectFit="cover" layout="fill" />
           </div>
           <div className="self-start text-xl md:text-2xl xxl:text-5xl">
-            <ReactMarkdown>{aboutPage.about.whoWeAreExtra}</ReactMarkdown>
+            <div dangerouslySetInnerHTML={{ __html: aboutPage.about.whoWeAreExtra }} />
           </div>
         </div>
       </SoftMotion>
@@ -213,6 +214,7 @@ export default function About({ aboutPage }) {
             objectFit="cover"
             layout="fill"
             className="rounded-b-xl rounded-tr-xl"
+            alt="team image"
           />
           <div className="flex h-full w-full items-center justify-center">
             <div className="absolute rounded-b-xl rounded-tr-xl bg-black px-8 py-2 text-2xl leading-tight text-white md:text-5xl xxl:text-7xl">
@@ -277,7 +279,7 @@ export default function About({ aboutPage }) {
       <SoftMotion>
         <div className="mb-10 mt-16 text-2xl xxl:mt-32 xxl:mb-20 xxl:text-5xl">Our History</div>
         <div className="paragraphs mx-10 mb-12 text-xl md:mx-32 md:columns-2 md:text-2xl xxl:mx-56 xxl:text-5xl">
-          <ReactMarkdown>{aboutPage.about.history}</ReactMarkdown>
+          <div dangerouslySetInnerHTML={{ __html: aboutPage.about.history }} />
         </div>
       </SoftMotion>
       <motion.div

@@ -73,10 +73,12 @@ const MobileNav = () => {
           <div>
             {headerNavLinks.map((link) => (
               <div key={link.title} className="px-5 py-4">
-                <Link href={link.href}>
-                  <a onClick={onToggleNav} className="text-7xl leading-8 text-white">
-                    {link.title}
-                  </a>
+                <Link
+                  href={link.href}
+                  onClick={onToggleNav}
+                  className="text-7xl leading-8 text-white"
+                >
+                  {link.title}
                 </Link>
               </div>
             ))}
