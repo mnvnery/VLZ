@@ -5,9 +5,7 @@ import { request } from '@/lib/datocms'
 import Button from '@/components/Button'
 import Image from 'next/image'
 import { EmblaCarousel } from '@/components/EmblaCarousel'
-import { motion } from 'framer-motion'
 import ProjectCard from '@/components/ProjectCard'
-import SoftMotion from '@/components/SoftMotion'
 
 const HOMEPAGE_QUERY = `{
   homePage {
@@ -71,52 +69,35 @@ export default function Home({ home, insights, work }) {
   return (
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
-      {/*
-      <div className="relative mt-10 mb-8 rounded-xl pt-[56.25%] md:mt-0 xxl:mt-10 xxl:mb-16">
-        <ReactPlayer
-          url={home.homePage.showreel.url}
-          playing
-          muted
-          loop
-          width="100%"
-          height="100%"
-          className="absolute top-0 left-0 overflow-hidden rounded-xl"
-        />
-      </div>
-      */}
+
       {/* Who we are section */}
-      <motion.div
-        initial={{ y: 100, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ stiffness: 50, duration: 0.7 }}
-      >
-        <div className="mx-[-2em] mb-6 bg-pink px-8 pt-8 xxl:mx-[-5em] xxl:px-20 xxl:py-10">
-          <div className="md:w-3/4">
-            <div className="mb-5 text-xl md:mb-3 md:text-2xl xxl:mb-8 xxl:mt-8 xxl:text-5xl">
-              Who we are
-            </div>
-            <div
-              className="text-3xl font-bold md:text-5xl xxl:text-7xl"
-              dangerouslySetInnerHTML={{ __html: home.homePage.whoWeAre }}
-            />
+
+      <div className="mx-[-2em] mb-6 bg-pink px-8 pt-8 xxl:mx-[-5em] xxl:px-20 xxl:py-10">
+        <div className="md:w-3/4">
+          <div className="mb-5 text-xl md:mb-3 md:text-2xl xxl:mb-8 xxl:mt-8 xxl:text-5xl">
+            Who we are
           </div>
-          <div className="py-10 text-center">
-            <Button href="/about" text="Find out more"></Button>
-          </div>
+          <div
+            className="text-3xl font-bold md:text-5xl xxl:text-7xl"
+            dangerouslySetInnerHTML={{ __html: home.homePage.whoWeAre }}
+          />
         </div>
-      </motion.div>
+        <div className="py-10 text-center">
+          <Button href="/about" text="Find out more"></Button>
+        </div>
+      </div>
       <div className="hidden md:block">
         <div className="mb-3 text-2xl xxl:mb-12 xxl:mt-20 xxl:text-5xl">Latest Work</div>
         <div className="grid grid-cols-3 gap-5 xxl:gap-10">
           {work.allProjects.map((w, i) => (
-            <SoftMotion key={i}>
+            <div key={i}>
               <ProjectCard
                 thumbnail={w.thumbnail.url}
                 title={w.title}
                 description={w.shortDescription}
                 href={`/work/${w.slug}`}
               />
-            </SoftMotion>
+            </div>
           ))}
         </div>
       </div>
@@ -142,7 +123,7 @@ export default function Home({ home, insights, work }) {
       <div className="py-10 text-center xxl:py-24">
         <Button href="/work" text="Discover all work"></Button>
       </div>
-      <SoftMotion>
+      <div>
         <div className="mx-[-2em] rounded-xl bg-gray-100 px-8 pt-6 xxl:mx-[-5em] xxl:px-20 xxl:pt-14">
           <div className="hidden md:block">
             <div className="mb-3 text-2xl xxl:mb-12 xxl:text-5xl">Insights</div>
@@ -204,8 +185,8 @@ export default function Home({ home, insights, work }) {
             <Button href="/work" text="Discover all insights"></Button>
           </div>
         </div>
-      </SoftMotion>
-      <SoftMotion>
+      </div>
+      <div>
         <div className="my-10 md:flex md:space-x-20 xxl:my-16">
           <div className="md:w-1/2">
             <div className="mb-5 text-2xl xxl:mb-8 xxl:text-5xl">Clients</div>
@@ -219,7 +200,7 @@ export default function Home({ home, insights, work }) {
             ))}
           </div>
         </div>
-      </SoftMotion>
+      </div>
     </>
   )
 }

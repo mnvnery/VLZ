@@ -3,7 +3,6 @@ import { PageSEO } from '@/components/SEO'
 import { request } from '@/lib/datocms'
 import Image from 'next/image'
 import Link from 'next/link'
-import SoftMotion from '@/components/SoftMotion'
 
 const WORK_QUERY = `{
   workPage {
@@ -85,11 +84,11 @@ export default function Work({ work }) {
           </div>
         ))}
       </div>
-      <SoftMotion>
+      <div>
         <div className="relative my-16 h-12 w-full md:my-28 md:h-44 xxl:my-32 xxl:h-[22vh]">
           <Image src={work.footerImage.url} objectFit="contain" layout="fill" />
         </div>
-      </SoftMotion>
+      </div>
     </>
   )
 }

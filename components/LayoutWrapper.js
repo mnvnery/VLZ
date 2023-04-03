@@ -14,7 +14,7 @@ export default function LayoutWrapper({ children }) {
       <div className="flex h-screen flex-col justify-between">
         <header className="z-[1] mx-4 mt-8 flex items-center justify-between md:mx-8 md:mt-10 xxl:mx-20 xxl:mt-20">
           <Link href="/" className="relative h-12 w-3/5 md:h-28 md:w-2/5 xxl:h-36 xxl:w-1/3">
-            <Image src={'/static/images/logo.svg'} layout="fill" objectFit="contain" />
+            <Image src="/static/images/logo.svg" layout="fill" objectFit="contain" alt="logo" />
           </Link>
           <div className="flex items-center text-base leading-5">
             <div className="hidden sm:block">
