@@ -4,8 +4,6 @@ import { PageSEO } from '@/components/SEO'
 import siteMetadata from '@/data/siteMetadata'
 import ReactMarkdown from 'react-markdown'
 import Button from '@/components/Button'
-import SoftMotion from '@/components/SoftMotion'
-import { motion } from 'framer-motion'
 
 function colour(hex) {
   if (hex === '#FFBAC4') {
@@ -101,7 +99,7 @@ export default function About({ aboutPage }) {
         />
       </div>
 
-      <SoftMotion>
+      <div>
         <div className="mb-7 flex flex-col items-center md:flex-row md:space-x-10 xxl:mb-14 xxl:space-x-20">
           <div className="relative mb-12 h-40 w-40">
             <Image src="/static/images/star.svg" objectFit="cover" layout="fill" />
@@ -110,8 +108,8 @@ export default function About({ aboutPage }) {
             <div dangerouslySetInnerHTML={{ __html: aboutPage.about.whoWeAreExtra }} />
           </div>
         </div>
-      </SoftMotion>
-      <SoftMotion>
+      </div>
+      <div>
         <div className="mb-7 border border-y border-x-0 border-black py-4">
           <div className="text-center text-2xl font-bold text-coral md:text-5xl xxl:text-7xl">
             WE NEVER STOP
@@ -206,8 +204,8 @@ export default function About({ aboutPage }) {
         <div className="text-center xxl:my-20">
           <Button href="/work" text="Discover our work"></Button>
         </div>
-      </SoftMotion>
-      <SoftMotion>
+      </div>
+      <div>
         <div className="relative mt-16 mb-12 h-[35vh] w-full md:h-[80vh]">
           <Image
             src={aboutPage.about.image1.url}
@@ -224,8 +222,8 @@ export default function About({ aboutPage }) {
             </div>
           </div>
         </div>
-      </SoftMotion>
-      <SoftMotion>
+      </div>
+      <div>
         <div className="mb-3 mt-10 text-2xl md:mt-0 md:mb-10 xxl:mb-16 xxl:mt-20 xxl:text-5xl">
           People
         </div>
@@ -250,8 +248,8 @@ export default function About({ aboutPage }) {
             </div>
           ))}
         </div>
-      </SoftMotion>
-      <SoftMotion>
+      </div>
+      <div>
         <div className="mb-10 mt-16 border-t  border-black pt-4 text-2xl md:border-0 xxl:mb-20 xxl:mt-32 xxl:text-5xl">
           Our Manifesto
         </div>
@@ -275,22 +273,18 @@ export default function About({ aboutPage }) {
             </div>
           ))}
         </div>
-      </SoftMotion>
-      <SoftMotion>
+      </div>
+      <div>
         <div className="mb-10 mt-16 text-2xl xxl:mt-32 xxl:mb-20 xxl:text-5xl">Our History</div>
         <div className="paragraphs mx-10 mb-12 text-xl md:mx-32 md:columns-2 md:text-2xl xxl:mx-56 xxl:text-5xl">
           <div dangerouslySetInnerHTML={{ __html: aboutPage.about.history }} />
         </div>
-      </SoftMotion>
-      <motion.div
-        initial={{ x: -100, opacity: 0 }}
-        whileInView={{ x: 0, opacity: 1 }}
-        transition={{ stiffness: 50, duration: 0.7 }}
-      >
+      </div>
+      <div>
         <div className="relative mb-12 h-[35vh] w-full md:h-[85vh] md:w-[60vw]">
           <Image src={aboutPage.about.image2.url} objectFit="contain" layout="fill" />
         </div>
-      </motion.div>
+      </div>
     </>
   )
 }
